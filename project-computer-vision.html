@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Vision Platform — Kalaichelvan S</title>
+  <meta name="description" content="Edge-native computer vision platform for real-time zone-based occupancy detection and intelligent load control — built with YOLO, MobileNet SSD and TensorRT." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar" aria-label="Primary">
+    <div class="nav-container">
+      <a class="nav-logo" href="index.html"><img class="logo-mark logo-photo" src="assets/img/profile.jpg" alt="Kalaichelvan S" />Kalaichelvan</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link active">Projects</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <a href="contact.html" class="btn btn-dark btn-sm">Get in Touch</a>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
+          <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-spacer"></div>
+
+  <section class="page-hero">
+    <div class="container reveal">
+      <div class="breadcrumb"><a href="index.html">Home</a> / <a href="projects.html">Projects</a> / Computer Vision</div>
+      <span class="section-label">Edge AI · Computer Vision</span>
+      <h1>Edge-Native <span class="highlight">Vision Platform</span></h1>
+      <p>I built a real-time, zone-based occupancy detection and load-control platform that runs entirely on-premises — no cloud — reusing existing CCTV cameras. It's part of my engineering background — and I now know its attack surface from the inside. <a href="#security" class="link-arrow" style="display:inline;">See the security perspective ↓</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container detail-grid">
+      <div class="detail-main">
+
+        <section class="reveal">
+          <h2><span class="idx">01</span> Objective</h2>
+          <p>To develop an edge-native computer vision platform capable of real-time zone-based occupancy detection and intelligent load control — operating entirely on-premises, without reliance on cloud infrastructure. The system leverages already-deployed CCTV cameras (accessed via RTSP streams), eliminating the need for new camera hardware investment.</p>
+        </section>
+
+        <section class="reveal">
+          <h2><span class="idx">02</span> Problems I Solved</h2>
+          <ul class="feature-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Eliminated cloud dependency.</strong> Ran custom-trained models directly on GPU-enabled edge servers (NVIDIA Jetson Nano or equivalent), enabling sub-second inference latency.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Reused existing CCTV.</strong> Ingested camera streams via RTSP, removing the cost and complexity of new hardware deployment.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Replaced motion sensors with configurable zones.</strong> Administrators define custom detection zones through an intuitive Zone Configurator UI, enabling granular spatial control.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Connected vision to building automation.</strong> Integrated seamlessly with BACnet/IP and KNX/IP building automation devices, enabling direct load control (lighting, HVAC) triggered by vision events.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Trained robust models.</strong> Used a dataset of ~63,000 annotated images with YOLO and MobileNet SSD, achieving robust detection across diverse lighting and occupancy densities.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Enabled hardware-agnostic deployment.</strong> Runs on any GPU-capable edge device, offering cost-flexibility across small and large-scale installations.</p></li>
+          </ul>
+        </section>
+
+        <section class="reveal">
+          <h2><span class="idx">03</span> Dataset Collection &amp; Model Training</h2>
+          <p>Building an accurate occupancy detection model required a purpose-built dataset and a structured training pipeline tailored to real indoor environments.</p>
+          <h3>Data Collection</h3>
+          <p>I captured footage directly from already-deployed CCTV cameras via RTSP streams — covering office spaces, cafeteria areas, corridors and digital signage zones under varying lighting and occupancy densities. Frames were extracted across different times of day (morning, peak hours, evening) to capture the full range of real-world occupancy patterns, including empty zones, single occupants, dense crowds, partial occlusions and mixed lighting. In total, ~<strong>63,000 annotated images</strong> were curated for training.</p>
+          <h3>Annotation &amp; Preprocessing</h3>
+          <p>Each image was annotated with bounding boxes and class labels (person / no-person) using structured labeling tools, following a consistent schema. Data augmentation — flipping, brightness variation, cropping and noise injection — improved generalization, and the dataset was split into training, validation and test sets for rigorous evaluation.</p>
+          <h3>Model Training</h3>
+          <p>I trained and benchmarked two architectures: <strong>YOLO</strong> for high-speed single-shot detection, and <strong>MobileNet SSD</strong> for lightweight inference on constrained hardware. YOLO was chosen as the primary model for real-time throughput; MobileNet SSD served as a fallback for low-power deployments like the Jetson Nano. Models were optimized post-training with NVIDIA TensorRT, and iterative retraining incorporated edge cases observed in live RTSP feeds.</p>
+
+          <div class="gallery gallery-stack reveal">
+            <figure class="shot"><a class="shot-zoom" href="assets/img/image1.jpg" target="_blank" rel="noopener"><img src="assets/img/image1.jpg" alt="Custom YOLOv8 training and validation results" loading="lazy" /></a><figcaption><b>Custom-trained model.</b> YOLOv8 training &amp; validation curves and batch previews.</figcaption></figure>
+            <figure class="shot"><a class="shot-zoom" href="assets/img/image2.jpg" target="_blank" rel="noopener"><img src="assets/img/image2.jpg" alt="Annotated person detections across real deployment zones" loading="lazy" /></a><figcaption><b>Annotations.</b> Person detections across offices, corridors and cafeteria zones.</figcaption></figure>
+          </div>
+          <span class="gallery-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6" stroke-linecap="round"/></svg> Click any image to view full resolution</span>
+        </section>
+
+        <section class="reveal">
+          <h2><span class="idx">04</span> Tech Stack</h2>
+          <div class="stack-table">
+            <div class="stack-row"><div class="layer">Hardware</div><div class="tech">NVIDIA Jetson Nano or GPU-enabled edge servers; existing IP cameras accessed via RTSP (no new camera hardware required)</div></div>
+            <div class="stack-row"><div class="layer">Firmware / OS</div><div class="tech">JetPack SDK, Ubuntu 20.04 LTS, CUDA drivers</div></div>
+            <div class="stack-row"><div class="layer">Vision Engine</div><div class="tech">Custom-trained YOLO &amp; MobileNet SSD models; ~63,000 annotated images; OpenCV; TensorRT for GPU inference optimization</div></div>
+            <div class="stack-row"><div class="layer">Application</div><div class="tech">Web-based Zone Configurator UI, real-time occupancy logic engine, threshold &amp; rule management, advertisement analytics dashboard</div></div>
+            <div class="stack-row"><div class="layer">Protocols</div><div class="tech">RTSP (existing CCTV ingestion), BACnet/IP, KNX/IP for load and device actuation</div></div>
+            <div class="stack-row"><div class="layer">Language / Runtime</div><div class="tech">Python 3.x, C++ (inference pipeline), GStreamer (video pipeline), local REST API</div></div>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h2><span class="idx">05</span> Applications</h2>
+          <p>I deployed the platform across three distinct real-world use cases:</p>
+          <div class="app-card">
+            <span class="app-num">Application 01</span>
+            <h4>Peak Hour &amp; Free Space Monitoring</h4>
+            <p>Deployed in IT workspaces and office cafeterias to monitor real-time occupancy throughout the day — identifying peak usage periods and highlighting available free spaces so facility managers can optimize space allocation, plan cleaning and enforce capacity limits without manual headcounts.</p>
+          </div>
+          <div class="app-card">
+            <span class="app-num">Application 02</span>
+            <h4>Occupancy-Based Load Control</h4>
+            <p>Connected the vision engine directly to building automation via BACnet/IP and KNX/IP to control lighting and HVAC based on detected occupancy. When a zone is vacant, connected loads are automatically dimmed or switched off — delivering measurable energy savings with zero manual intervention and no cloud round-trip latency.</p>
+          </div>
+          <div class="app-card">
+            <span class="app-num">Application 03</span>
+            <h4>Digital Advertisement Board Audience Analytics</h4>
+            <p>Monitors foot traffic in front of digital display boards — counting people who pass by or stop to view, and calculating individual dwell time — giving advertisers quantifiable metrics on reach, engagement and peak viewing windows.</p>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h2><span class="idx">06</span> Result</h2>
+          <p>The platform runs in production across live deployments, delivering a real-time detection console and an energy-usage dashboard driven entirely by on-premise inference.</p>
+
+          <div class="gallery gallery-stack reveal">
+            <figure class="shot"><a class="shot-zoom" href="assets/img/image3.jpg" target="_blank" rel="noopener"><img src="assets/img/image3.jpg" alt="Real-time detection console with zone configuration" loading="lazy" /></a><figcaption><b>Real-time detection console.</b> Live zone configuration with per-person confidence.</figcaption></figure>
+            <figure class="shot"><a class="shot-zoom" href="assets/img/image4.jpg" target="_blank" rel="noopener"><img src="assets/img/image4.jpg" alt="Energy usage and HVAC dashboard" loading="lazy" /></a><figcaption><b>Energy usage dashboard.</b> HVAC live charts, area statistics and occupancy.</figcaption></figure>
+          </div>
+
+          <div class="result-grid">
+            <div class="result-tile"><div class="big"><span class="highlight">~63K</span></div><div class="lbl">Annotated training images</div></div>
+            <div class="result-tile"><div class="big"><span class="highlight">&lt;1s</span></div><div class="lbl">Edge inference latency</div></div>
+            <div class="result-tile"><div class="big"><span class="highlight">0</span></div><div class="lbl">Cloud dependency</div></div>
+            <div class="result-tile"><div class="big"><span class="highlight">3</span></div><div class="lbl">Live application domains</div></div>
+          </div>
+        </section>
+
+        <section class="reveal" id="security">
+          <h2><span class="idx">07</span> Security Perspective</h2>
+          <p>Because I built this stack, I can see exactly where it would be attacked — and how I'd defend it as an OT security engineer.</p>
+          <ul class="feature-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3 5 6v5c0 4 2.7 6.8 7 8 4.3-1.2 7-4 7-8V6l-7-3z" stroke-linejoin="round"/></svg></span><p><strong>Attack surface.</strong> Unauthenticated RTSP/ONVIF camera streams, the GPU edge server, and BACnet/IP &amp; KNX/IP actuation — building-automation protocols with no built-in authentication — are the primary exposure.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3 5 6v5c0 4 2.7 6.8 7 8 4.3-1.2 7-4 7-8V6l-7-3z" stroke-linejoin="round"/></svg></span><p><strong>Secure by design.</strong> Running fully on-premise means no video ever leaves the site — removing cloud-exfiltration risk and keeping occupancy data private by default.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3 5 6v5c0 4 2.7 6.8 7 8 4.3-1.2 7-4 7-8V6l-7-3z" stroke-linejoin="round"/></svg></span><p><strong>How I'd harden it.</strong> Segment the camera VLAN, rotate default RTSP credentials, restrict BACnet/KNX to a defined conduit, and require authentication on the Zone Configurator UI — mapped to IEC 62443 zones &amp; conduits.</p></li>
+          </ul>
+        </section>
+
+      </div>
+
+      <aside class="detail-side reveal">
+        <div class="side-card">
+          <h4>Project Snapshot</h4>
+          <div class="kv"><span class="k">Domain</span><span class="v">Edge AI / Vision</span></div>
+          <div class="kv"><span class="k">Deployment</span><span class="v">On-premise</span></div>
+          <div class="kv"><span class="k">Models</span><span class="v">YOLO · MobileNet SSD</span></div>
+          <div class="kv"><span class="k">Hardware</span><span class="v">Jetson Nano</span></div>
+          <div class="kv"><span class="k">Protocols</span><span class="v">RTSP · BACnet · KNX</span></div>
+        </div>
+        <div class="side-card">
+          <h4>Key Capabilities</h4>
+          <div class="chips">
+            <span class="eco-tag">Zone Configurator</span><span class="eco-tag">TensorRT</span><span class="eco-tag">GStreamer</span>
+            <span class="eco-tag">OpenCV</span><span class="eco-tag">REST API</span><span class="eco-tag">HVAC Control</span>
+          </div>
+        </div>
+        <div class="side-card">
+          <h4>More Projects</h4>
+          <div class="kv"><span class="k"><a href="project-radar.html" class="link-arrow">Radar System</a></span></div>
+          <div class="kv"><span class="k"><a href="project-ble-tracking.html" class="link-arrow">BLE Tracking</a></span></div>
+          <a href="contact.html" class="btn btn-blue btn-sm" style="margin-top:14px;width:100%;">Get in Touch</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid-bg"></div>
+    <div class="footer-inner">
+      <div class="footer-motto">Build · Break · Secure</div>
+      <div class="footer-container">
+        <div class="footer-brand">
+          <div class="footer-logo"><span class="logo-mark">K</span> Kalaichelvan S</div>
+          <p class="footer-description">OT / ICS Security Engineer securing industrial and building-automation systems — grounded in hands-on product development across firmware, protocols, PLC/SCADA and cloud.</p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/kalaichelvansk/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg></a>
+            <a href="mailto:kalaichelvanssivakumar@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+            <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-section"><h3>Projects</h3><ul class="footer-links">
+          <li><a href="project-computer-vision.html">Computer Vision</a></li>
+          <li><a href="project-radar.html">Radar V1 &amp; V2</a></li>
+          <li><a href="project-power-factor.html">Power Factor Correction</a></li>
+          <li><a href="project-ble-tracking.html">BLE Tracking</a></li>
+        </ul></div>
+        <div class="footer-section"><h3>Navigate</h3><ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+        <div class="footer-section"><h3>Contact</h3><ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:kalaichelvanssivakumar@gmail.com">kalaichelvanssivakumar@gmail.com</a></li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg><a href="https://www.linkedin.com/in/kalaichelvansk/" target="_blank" rel="noopener">linkedin.com/in/kalaichelvansk</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <span>© <span data-year>2026</span> Kalaichelvan S · Built with care.</span>
+        <div class="footer-badges"><span>OT Security</span><span>ICS</span><span>IEC 62443</span><span>Forensics</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

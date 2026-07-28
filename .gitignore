@@ -1,0 +1,10 @@
+# Private / source files — not part of the published site
+*.docx
+~$*.docx
+IMG_20251111_010825_060.webp
+Screenshot*.png
+
+# Tooling / OS
+.claude/
+.DS_Store
+Thumbs.db

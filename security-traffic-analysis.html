@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OT Network Traffic Analysis — Kalaichelvan S</title>
+  <meta name="description" content="Hands-on OT security lab: capturing and dissecting industrial protocol traffic (Modbus/TCP, BACnet, MQTT) in Wireshark to baseline operations and detect anomalies, aligned to IEC 62443." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar" aria-label="Primary">
+    <div class="nav-container">
+      <a class="nav-logo" href="index.html"><img class="logo-mark logo-photo" src="assets/img/profile.jpg" alt="Kalaichelvan S" />Kalaichelvan</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link active">Projects</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <a href="contact.html" class="btn btn-dark btn-sm">Get in Touch</a>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
+          <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-spacer"></div>
+
+  <section class="page-hero">
+    <div class="container reveal">
+      <div class="breadcrumb"><a href="index.html">Home</a> / <a href="projects.html">Projects</a> / OT Network Traffic Analysis</div>
+      <span class="section-label">Traffic Analysis · Wireshark</span>
+      <h1>OT Network <span class="highlight">Traffic Analysis</span></h1>
+      <p>A hands-on lab where I capture and dissect real industrial protocol traffic — Modbus/TCP, BACnet and MQTT — to baseline normal operation and detect anomalies, unauthorized writes and reconnaissance. Built to develop and demonstrate OT monitoring capability in a safe, authorized environment.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container detail-grid">
+      <div class="detail-main">
+
+        <section class="reveal">
+          <h2><span class="idx">01</span> Objective</h2>
+          <p>To build practical skill in monitoring operational-technology networks — understanding what "normal" looks like on industrial protocols so that malicious or anomalous activity stands out. I focus on the exact protocols I built products on (Modbus, BACnet, MQTT), which lets me read the traffic at the field level, not just the packet level.</p>
+        </section>
+
+        <section class="reveal">
+          <h2><span class="idx">02</span> What I Do</h2>
+          <ul class="feature-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Capture safely.</strong> Collect traffic passively via a SPAN port / network TAP so monitoring never interferes with a live control process.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Dissect the protocol.</strong> Use Wireshark's Modbus, BACnet and MQTT dissectors and custom display filters to read function codes, register reads/writes, object properties and topics.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Baseline normal.</strong> Profile who talks to whom, on which registers, how often — building a picture of legitimate polling and control patterns.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Flag anomalies.</strong> Spot unauthorized <em>write</em> function codes, unexpected masters, malformed PDUs, replayed commands and scanning bursts — the fingerprints of an attack on an ICS.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Script it.</strong> Automate extraction with <code>tshark</code> to pull indicators from large captures for repeatable analysis.</p></li>
+          </ul>
+        </section>
+
+        <section class="reveal">
+          <h2><span class="idx">03</span> Tools &amp; Techniques</h2>
+          <div class="stack-table">
+            <div class="stack-row"><div class="layer">Capture</div><div class="tech">Wireshark, tshark, dumpcap; passive collection via SPAN port / network TAP</div></div>
+            <div class="stack-row"><div class="layer">Protocols</div><div class="tech">Modbus/TCP (function codes, coils/registers), BACnet/IP (objects &amp; properties), MQTT (topics, retained messages)</div></div>
+            <div class="stack-row"><div class="layer">Analysis</div><div class="tech">Display filters, Follow TCP stream, IO graphs, Expert Info, protocol hierarchy, conversation statistics</div></div>
+            <div class="stack-row"><div class="layer">Detection focus</div><div class="tech">Unauthorized writes, rogue masters, replay, malformed PDUs, port/register scanning, cleartext credentials</div></div>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h2><span class="idx">04</span> IEC 62443 Alignment</h2>
+          <p>Passive monitoring and traffic baselining map directly to the standard's requirements for visibility and detection:</p>
+          <ul class="feature-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>FR 6 — Timely response to events.</strong> Continuous monitoring and audit of control-system communications.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>FR 7 — Resource availability.</strong> Detecting floods and scanning that threaten the availability of a control process.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Zones &amp; conduits.</strong> Traffic profiling validates that communication stays within its intended conduit and no unexpected flows cross zone boundaries.</p></li>
+          </ul>
+        </section>
+
+      </div>
+
+      <aside class="detail-side reveal">
+        <div class="side-card">
+          <h4>Lab Snapshot</h4>
+          <div class="kv"><span class="k">Domain</span><span class="v">Traffic Analysis</span></div>
+          <div class="kv"><span class="k">Primary tool</span><span class="v">Wireshark</span></div>
+          <div class="kv"><span class="k">Protocols</span><span class="v">Modbus · BACnet · MQTT</span></div>
+          <div class="kv"><span class="k">Standard</span><span class="v">IEC 62443</span></div>
+          <div class="kv"><span class="k">Context</span><span class="v">Authorized lab</span></div>
+        </div>
+        <div class="side-card">
+          <h4>Techniques</h4>
+          <div class="chips">
+            <span class="eco-tag">Display filters</span><span class="eco-tag">tshark</span><span class="eco-tag">Baselining</span>
+            <span class="eco-tag">Anomaly detection</span><span class="eco-tag">SPAN / TAP</span><span class="eco-tag">Replay detection</span>
+          </div>
+        </div>
+        <div class="side-card">
+          <h4>More Projects</h4>
+          <div class="kv"><span class="k"><a href="security-asset-discovery.html" class="link-arrow">Asset Discovery</a></span></div>
+          <div class="kv"><span class="k"><a href="security-ics-testbed.html" class="link-arrow">PLC / SCADA Testbed</a></span></div>
+          <a href="contact.html" class="btn btn-blue btn-sm" style="margin-top:14px;width:100%;">Get in Touch</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid-bg"></div>
+    <div class="footer-inner">
+      <div class="footer-motto">Build · Break · Secure</div>
+      <div class="footer-container">
+        <div class="footer-brand">
+          <div class="footer-logo"><span class="logo-mark">K</span> Kalaichelvan S</div>
+          <p class="footer-description">OT / ICS Security Engineer securing industrial and building-automation systems — grounded in hands-on product development across firmware, protocols, PLC/SCADA and cloud.</p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/kalaichelvansk/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg></a>
+            <a href="mailto:kalaichelvanssivakumar@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+            <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-section"><h3>Projects</h3><ul class="footer-links">
+          <li><a href="security-traffic-analysis.html">OT Traffic Analysis</a></li>
+          <li><a href="security-asset-discovery.html">ICS Asset Discovery</a></li>
+          <li><a href="security-vuln-assessment.html">OT Vulnerability Assessment</a></li>
+          <li><a href="security-ics-testbed.html">PLC / SCADA Testbed</a></li>
+        </ul></div>
+        <div class="footer-section"><h3>Navigate</h3><ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+        <div class="footer-section"><h3>Contact</h3><ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:kalaichelvanssivakumar@gmail.com">kalaichelvanssivakumar@gmail.com</a></li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg><a href="https://www.linkedin.com/in/kalaichelvansk/" target="_blank" rel="noopener">linkedin.com/in/kalaichelvansk</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <span>© <span data-year>2026</span> Kalaichelvan S · Built with care.</span>
+        <div class="footer-badges"><span>OT Security</span><span>ICS</span><span>IEC 62443</span><span>Forensics</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
