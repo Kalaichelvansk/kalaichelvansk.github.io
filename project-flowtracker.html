@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FlowTracker RFID Pickup Tracking — Kalaichelvan S</title>
-  <meta name="description" content="FlowTracker — an ESP32 RFID reader fleet and web platform that replaces self-reported wage quantities in a coir facility with verified, per-scan pickup counts." />
+  <meta name="description" content="FlowTracker — a microprocessor-based RFID reader fleet and web platform that replaces self-reported wage quantities in a coir facility with verified, per-scan pickup counts." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -37,7 +37,7 @@
       <div class="breadcrumb"><a href="index.html">Home</a> / <a href="projects.html">Projects</a> / FlowTracker</div>
       <span class="section-label">RFID · Industrial IoT</span>
       <h1>FlowTracker <span class="highlight">RFID Pickup Tracking</span></h1>
-      <p>We built and deployed a fleet of ESP32 RFID readers and a web platform for a coir-processing facility. It replaces self-reported, wage-linked production quantities with counts of verified card scans, and covers device provisioning, OTA updates and automated reports. <a href="#deployment" class="link-arrow" style="display:inline;">See how we built and deployed it ↓</a></p>
+      <p>We built and deployed a fleet of microprocessor-based RFID readers and a web platform for a coir-processing facility. It replaces self-reported, wage-linked production quantities with counts of verified card scans, and covers device provisioning, OTA updates and automated reports. <a href="#deployment" class="link-arrow" style="display:inline;">See how we built and deployed it ↓</a></p>
     </div>
   </section>
 
@@ -45,7 +45,7 @@
     <div class="container detail-grid">
       <div class="detail-main">
 
-        <figure class="shot contain reveal" style="margin-bottom:2.5rem;"><a class="shot-zoom" href="assets/img/ft-reader.jpg" target="_blank" rel="noopener"><img src="assets/img/ft-reader.jpg" alt="Auvetra ESP32 RFID reader mounted at the picking station, reading a worker's card" /></a><figcaption><b>The reader in the field.</b> An Auvetra RFID reader in its 3D-printed enclosure at the raw-material picking station, reading a worker's card.</figcaption></figure>
+        <figure class="shot contain reveal" style="margin-bottom:2.5rem;"><a class="shot-zoom" href="assets/img/ft-reader.jpg" target="_blank" rel="noopener"><img src="assets/img/ft-reader.jpg" alt="Auvetra microprocessor-based RFID reader mounted at the picking station, reading a worker's card" /></a><figcaption><b>The reader in the field.</b> An Auvetra RFID reader in its 3D-printed enclosure at the raw-material picking station, reading a worker's card.</figcaption></figure>
 
         <section class="reveal">
           <h2><span class="idx">01</span> The Customer Problem</h2>
@@ -73,11 +73,11 @@
         <section class="reveal">
           <h2><span class="idx">03</span> Tech Stack</h2>
           <div class="stack-table">
-            <div class="stack-row"><div class="layer">Hardware</div><div class="tech">ESP32-based RFID readers with a secured captive-portal provisioning AP and two-tier reset (network / factory)</div></div>
+            <div class="stack-row"><div class="layer">Hardware</div><div class="tech">Microprocessor-based RFID readers with a secured captive-portal provisioning AP and two-tier reset (network / factory)</div></div>
             <div class="stack-row"><div class="layer">Device API</div><div class="tech">Versioned REST (<code>/api/v1</code>): register, heartbeat, config fetch, pickup; status enforced per endpoint</div></div>
             <div class="stack-row"><div class="layer">Backend</div><div class="tech">Node.js on Vercel serverless functions, Vercel Cron retention jobs</div></div>
             <div class="stack-row"><div class="layer">Data</div><div class="tech">Supabase (PostgreSQL): devices, employees, pickup events, enrollment sessions, audit trail; Edge Functions + pg_cron for scheduled email</div></div>
-            <div class="stack-row"><div class="layer">Web App</div><div class="tech">React + Vite + Tailwind PWA, Recharts dashboards, esptool-js browser flashing, XLSX/ExcelJS reports</div></div>
+            <div class="stack-row"><div class="layer">Web App</div><div class="tech">React + Vite + Tailwind PWA, Recharts dashboards, Web Serial browser flashing, XLSX/ExcelJS reports</div></div>
             <div class="stack-row"><div class="layer">Firmware Ops</div><div class="tech">OTA release pipeline with admin approval gate, force-reflag and cancel, plus manual firmware upload</div></div>
           </div>
         </section>
@@ -123,7 +123,7 @@
           <h4>Project Snapshot</h4>
           <div class="kv"><span class="k">Domain</span><span class="v">RFID / Industrial IoT</span></div>
           <div class="kv"><span class="k">Industry</span><span class="v">Coir processing</span></div>
-          <div class="kv"><span class="k">Device</span><span class="v">ESP32 RFID reader</span></div>
+          <div class="kv"><span class="k">Device</span><span class="v">Microprocessor RFID reader</span></div>
           <div class="kv"><span class="k">Backend</span><span class="v">Node.js · Supabase</span></div>
           <div class="kv"><span class="k">Frontend</span><span class="v">React PWA</span></div>
         </div>
