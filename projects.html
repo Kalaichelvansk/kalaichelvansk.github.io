@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects — Kalaichelvan S</title>
-  <meta name="description" content="IoT engineering projects by Kalaichelvan S: edge computer vision, mmWave radar presence detection, power factor correction and BLE tracking." />
+  <meta name="description" content="Customer deployments by Kalaichelvan S: an RFID platform on a factory floor, edge computer vision, mmWave radar presence detection, power factor correction and BLE tracking." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -36,125 +36,70 @@
     <div class="container reveal">
       <div class="breadcrumb"><a href="index.html">Home</a> / Projects</div>
       <span class="section-label">Portfolio</span>
-      <h1>Security work &amp; <span class="highlight">engineering background</span></h1>
-      <p>Hands-on OT/ICS security labs built on my real tooling — Wireshark, Nmap, Shodan, Nessus — alongside the four industrial systems I engineered end-to-end at Auvetra Labs. Together they show both sides: I understand these systems because I built them, and I secure them with the right methods.</p>
+      <h1>Products we <span class="highlight">built &amp; deployed</span></h1>
+      <p>Each project started with a customer problem on a real site: a factory floor, an office building, an electrical panel. We scoped it with the people doing the work, designed and built every layer ourselves (hardware, firmware, backend and dashboard), deployed it on-site, and kept improving it from what we saw in the field.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <div class="section-header left reveal">
-        <span class="section-label">OT Security Projects</span>
-        <h2>Hands-on <span class="highlight">industrial security</span></h2>
-        <p>Labs and assessments applying my tooling — Wireshark, Nmap, Shodan, Nessus — to real industrial protocols and control systems, mapped to IEC 62443.</p>
+        <span class="section-label">Field Deployments</span>
+        <h2>From customer problem to <span class="highlight">production</span></h2>
+        <p>Five products my team and I designed, built and deployed end to end, then supported in the field with customers.</p>
       </div>
       <div class="cards-grid">
-        <a class="feature-card reveal" href="security-traffic-analysis.html">
+
+        <a class="feature-card reveal" href="project-flowtracker.html">
           <div class="feature-card-box">
-            <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12h4l2-7 4 14 2-7h8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="feature-card-tag">Traffic Analysis · Wireshark</div>
-            <h3 class="feature-card-title">OT Network Traffic Analysis</h3>
-            <p class="feature-card-desc">Capturing and dissecting industrial protocol traffic — Modbus/TCP, BACnet, MQTT — to baseline normal operation and flag anomalies, unauthorized writes and reconnaissance.</p>
-            <div class="expertise-tags"><span class="expertise-tag">Wireshark</span><span class="expertise-tag">tshark</span><span class="expertise-tag">Modbus</span><span class="expertise-tag">IEC 62443</span></div>
+            <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9v6M10 9v6M13 9v6M16 9v6" stroke-linecap="round"/></svg></div>
+            <div class="feature-card-tag">RFID · Factory Floor</div>
+            <h3 class="feature-card-title">FlowTracker RFID Pickup Tracking</h3>
+            <p class="feature-card-desc">A coir facility paid wages on self-reported quantities. We built the RFID readers, firmware and web platform and deployed them on the factory floor to count verified scans instead, with fleet provisioning, OTA updates and automated reports.</p>
+            <div class="expertise-tags"><span class="expertise-tag">ESP32</span><span class="expertise-tag">RFID</span><span class="expertise-tag">Supabase</span><span class="expertise-tag">React</span><span class="expertise-tag">OTA</span></div>
             <span class="feature-card-cta">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
         </a>
-
-        <a class="feature-card reveal" data-delay="1" href="security-asset-discovery.html">
-          <div class="feature-card-box">
-            <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg></div>
-            <div class="feature-card-tag">Asset Discovery · Nmap + Shodan</div>
-            <h3 class="feature-card-title">ICS Asset Discovery &amp; Exposure</h3>
-            <p class="feature-card-desc">Mapping the OT attack surface — fingerprinting field devices and services with Nmap, and finding internet-exposed ICS/SCADA with Shodan — to quantify exposure across the Purdue model.</p>
-            <div class="expertise-tags"><span class="expertise-tag">Nmap</span><span class="expertise-tag">Shodan</span><span class="expertise-tag">Asset Inventory</span><span class="expertise-tag">Purdue Model</span></div>
-            <span class="feature-card-cta">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-        </a>
-
-        <a class="feature-card reveal" href="security-vuln-assessment.html">
-          <div class="feature-card-box">
-            <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3z" stroke-linejoin="round"/><path d="M12 8v4M12 15.5h.01" stroke-linecap="round"/></svg></div>
-            <div class="feature-card-tag">Vulnerability Assessment · Nessus</div>
-            <h3 class="feature-card-title">OT Vulnerability Assessment</h3>
-            <p class="feature-card-desc">Assessing OT assets for weaknesses — default credentials, unpatched firmware, insecure services — with Nessus, then prioritizing and mapping remediation to IEC 62443 zones, conduits and security levels.</p>
-            <div class="expertise-tags"><span class="expertise-tag">Nessus</span><span class="expertise-tag">IEC 62443</span><span class="expertise-tag">CVE</span><span class="expertise-tag">Risk</span></div>
-            <span class="feature-card-cta">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-        </a>
-
-        <a class="feature-card reveal" data-delay="1" href="security-ics-testbed.html">
-          <div class="feature-card-box">
-            <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2" stroke-linecap="round"/></svg></div>
-            <div class="feature-card-tag">ICS Testbed · PLC / SCADA</div>
-            <h3 class="feature-card-title">PLC / SCADA Security Testbed</h3>
-            <p class="feature-card-desc">A hands-on testbed (OpenPLC + Modbus + HMI) replicating a small industrial process — to study ICS attacks like unauthorized writes, replay and DoS, then apply IEC 62443 hardening: segmentation, authentication and secure configuration.</p>
-            <div class="expertise-tags"><span class="expertise-tag">OpenPLC</span><span class="expertise-tag">SCADA</span><span class="expertise-tag">Modbus</span><span class="expertise-tag">Segmentation</span></div>
-            <span class="feature-card-cta">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-secondary">
-    <div class="container">
-      <div class="section-header left reveal">
-        <span class="section-label">Engineering Background</span>
-        <h2>The OT systems I <span class="highlight">built &amp; shipped</span></h2>
-        <p>Five products I engineered end-to-end at Auvetra Labs — the hardware, firmware, protocols and dashboards that give me an insider's view of the OT attack surface.</p>
-      </div>
-      <div class="cards-grid">
-        <a class="feature-card reveal" href="project-computer-vision.html">
+        <a class="feature-card reveal" data-delay="1" href="project-computer-vision.html">
           <div class="feature-card-box">
             <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3.2"/></svg></div>
-            <div class="feature-card-tag">Edge AI · Computer Vision</div>
+            <div class="feature-card-tag">Edge AI · Facilities</div>
             <h3 class="feature-card-title">Edge-Native Vision Platform</h3>
-            <p class="feature-card-desc">Real-time zone-based occupancy detection and intelligent load control running entirely on-premises. Ingests existing CCTV via RTSP, runs custom YOLO / MobileNet SSD models on GPU edge hardware, and actuates loads over BACnet/IP and KNX/IP.</p>
+            <p class="feature-card-desc">Facility teams wanted occupancy data and automatic energy savings without new cameras or the cloud. We built a platform that reuses their existing CCTV over RTSP, trained custom YOLO models, and deployed it on edge GPUs on-site, wired into their BACnet/KNX lighting and HVAC.</p>
             <div class="expertise-tags"><span class="expertise-tag">YOLO</span><span class="expertise-tag">MobileNet SSD</span><span class="expertise-tag">Jetson</span><span class="expertise-tag">TensorRT</span><span class="expertise-tag">RTSP</span></div>
             <span class="feature-card-cta">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
         </a>
 
-        <a class="feature-card reveal" data-delay="1" href="project-radar.html">
+        <a class="feature-card reveal" href="project-radar.html">
           <div class="feature-card-box">
             <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 12l7-4"/><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.5"/><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/></svg></div>
-            <div class="feature-card-tag">mmWave · Presence Detection</div>
+            <div class="feature-card-tag">mmWave · Smart Buildings</div>
             <h3 class="feature-card-title">Radar Presence System — V1 &amp; V2</h3>
-            <p class="feature-card-desc">A next-generation radar platform that detects both static and moving presence where PIR sensors fail. V2 extends to multi-target tracking of up to 10 occupants with a spatial zone configurator and direct load-control output.</p>
+            <p class="feature-card-desc">Customers needed presence detection that PIR missed, such as people sitting still. We designed, built and deployed two hardware generations: tracking of up to 10 occupants, a zone configurator, and integrations with AWS, Alexa, BACnet/KNX and Home Assistant.</p>
             <div class="expertise-tags"><span class="expertise-tag">mmWave FMCW</span><span class="expertise-tag">AWS IoT</span><span class="expertise-tag">Alexa</span><span class="expertise-tag">BACnet/KNX</span><span class="expertise-tag">Custom PCB</span></div>
             <span class="feature-card-cta">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
         </a>
 
-        <a class="feature-card reveal" href="project-power-factor.html">
+        <a class="feature-card reveal" data-delay="1" href="project-power-factor.html">
           <div class="feature-card-box">
             <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 2L4.5 13.5H11l-1 8.5L19.5 10H13l0-8z" stroke-linejoin="round"/></svg></div>
-            <div class="feature-card-tag">Energy · Industrial</div>
+            <div class="feature-card-tag">Energy · Industrial Sites</div>
             <h3 class="feature-card-title">Power Factor Correction</h3>
-            <p class="feature-card-desc">A local-network web application for real-time monitoring and automated correction of power factor across industrial and commercial installations — automatically switching capacitor banks to improve efficiency and avoid utility penalties.</p>
+            <p class="feature-card-desc">Facilities were paying utility penalties for poor power factor. We built and deployed a LAN-only system on-site that reads their energy meters over Modbus, switches capacitor banks automatically, and logs everything for audit.</p>
             <div class="expertise-tags"><span class="expertise-tag">Modbus RTU</span><span class="expertise-tag">RS-485</span><span class="expertise-tag">InfluxDB</span><span class="expertise-tag">Node.js</span><span class="expertise-tag">LAN-only</span></div>
             <span class="feature-card-cta">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
         </a>
 
-        <a class="feature-card reveal" data-delay="1" href="project-ble-tracking.html">
+        <a class="feature-card reveal" href="project-ble-tracking.html">
           <div class="feature-card-box">
             <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 8l10 8-5 4V4l5 4-10 8" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
-            <div class="feature-card-tag">Wireless · IoT</div>
+            <div class="feature-card-tag">Wireless · Presence</div>
             <h3 class="feature-card-title">BLE Presence Tracking</h3>
-            <p class="feature-card-desc">A cost-effective presence system that leverages the BLE stack of microcontrollers and smartphones — using RSSI signal strength and UUID identification to detect presence without dedicated RFID or UWB infrastructure.</p>
+            <p class="feature-card-desc">A low-cost presence system that reuses the Bluetooth already in phones and microcontrollers instead of dedicated RFID/UWB. We built the custom PCB scanner nodes, firmware and provisioning app, and deployed it with Alexa automation.</p>
             <div class="expertise-tags"><span class="expertise-tag">ESP-IDF</span><span class="expertise-tag">Zephyr</span><span class="expertise-tag">RSSI</span><span class="expertise-tag">MQTT</span><span class="expertise-tag">Alexa</span></div>
-            <span class="feature-card-cta">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-        </a>
-
-        <a class="feature-card reveal" href="project-flowtracker.html">
-          <div class="feature-card-box">
-            <div class="feature-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 9v6M10 9v6M13 9v6M16 9v6" stroke-linecap="round"/></svg></div>
-            <div class="feature-card-tag">RFID · Industrial IoT</div>
-            <h3 class="feature-card-title">FlowTracker RFID Pickup Tracking</h3>
-            <p class="feature-card-desc">An ESP32 RFID reader fleet and web platform for a coir facility. It replaces self-reported, wage-linked quantities with counts of verified card scans, and handles device provisioning, approval-gated OTA and automated XLSX reports.</p>
-            <div class="expertise-tags"><span class="expertise-tag">ESP32</span><span class="expertise-tag">RFID</span><span class="expertise-tag">Supabase</span><span class="expertise-tag">React</span><span class="expertise-tag">OTA</span></div>
             <span class="feature-card-cta">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
         </a>
@@ -166,7 +111,7 @@
     <div class="container">
       <div class="cta-band reveal">
         <h2>Interested in <span class="highlight">working together</span>?</h2>
-        <p>I'm open to OT / ICS security roles. Let's talk about how my build-and-secure perspective can strengthen your industrial systems.</p>
+        <p>I'm open to Forward Deployed Engineer roles. Let's talk about how I can take your product on-site and make it work for your customers.</p>
         <div class="hero-actions"><a href="contact.html" class="btn btn-blue">Get in Touch</a></div>
       </div>
     </div>
@@ -175,11 +120,11 @@
   <footer class="footer">
     <div class="footer-grid-bg"></div>
     <div class="footer-inner">
-      <div class="footer-motto">Build · Break · Secure</div>
+      <div class="footer-motto">Discover · Build · Deploy</div>
       <div class="footer-container">
         <div class="footer-brand">
           <div class="footer-logo"><span class="logo-mark">K</span> Kalaichelvan S</div>
-          <p class="footer-description">OT / ICS Security Engineer securing industrial and building-automation systems — grounded in hands-on product development across firmware, protocols, PLC/SCADA and cloud.</p>
+          <p class="footer-description">Forward Deployed Engineer who works on-site with customers and ships full-stack systems into production, from firmware and field devices to backends, dashboards and cloud.</p>
           <div class="footer-socials">
             <a href="https://www.linkedin.com/in/kalaichelvansk/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg></a>
             <a href="mailto:kalaichelvanssivakumar@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
@@ -208,7 +153,7 @@
     <div class="footer-bottom">
       <div class="footer-bottom-container">
         <span>© <span data-year>2026</span> Kalaichelvan S · Built with care.</span>
-        <div class="footer-badges"><span>OT Security</span><span>ICS</span><span>IEC 62443</span><span>Forensics</span></div>
+        <div class="footer-badges"><span>Forward Deployed</span><span>Full-Stack</span><span>Field → Cloud</span><span>Customer-Facing</span></div>
       </div>
     </div>
   </footer>
