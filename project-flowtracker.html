@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowTracker RFID Pickup Tracking — Kalaichelvan S</title>
+  <meta name="description" content="FlowTracker — an ESP32 RFID reader fleet and web platform that replaces self-reported wage quantities in a coir facility with verified, per-scan pickup counts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar" aria-label="Primary">
+    <div class="nav-container">
+      <a class="nav-logo" href="index.html"><img class="logo-mark logo-photo" src="assets/img/profile.jpg" alt="Kalaichelvan S" />Kalaichelvan</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link active">Projects</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-right">
+        <a href="contact.html" class="btn btn-dark btn-sm">Get in Touch</a>
+        <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false">
+          <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="navbar-spacer"></div>
+
+  <section class="page-hero">
+    <div class="container reveal">
+      <div class="breadcrumb"><a href="index.html">Home</a> / <a href="projects.html">Projects</a> / FlowTracker</div>
+      <span class="section-label">RFID · Industrial IoT</span>
+      <h1>FlowTracker <span class="highlight">RFID Pickup Tracking</span></h1>
+      <p>A fleet of ESP32 RFID readers and a web platform for a coir-processing facility. It replaces self-reported, wage-linked production quantities with counts of verified card scans, and covers device provisioning, OTA updates and automated reports. <a href="#security" class="link-arrow" style="display:inline;">See the security perspective ↓</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container detail-grid">
+      <div class="detail-main">
+
+        <figure class="shot contain reveal" style="margin-bottom:2.5rem;"><a class="shot-zoom" href="assets/img/ft-reader.jpg" target="_blank" rel="noopener"><img src="assets/img/ft-reader.jpg" alt="Auvetra ESP32 RFID reader mounted at the picking station, reading a worker's card" /></a><figcaption><b>The reader in the field.</b> An Auvetra RFID reader in its 3D-printed enclosure at the raw-material picking station, reading a worker's card.</figcaption></figure>
+
+        <section class="reveal">
+          <h2><span class="idx">01</span> Objective</h2>
+          <p>Workers are paid by how much raw material they process, and that figure used to be reported verbally to a manager, with every incentive to round up. RFID proves <em>who</em> picked but not <em>how much</em>. FlowTracker closes the gap: material is issued in fixed-size units, one at a time, and each verified scan counts as exactly one unit.</p>
+        </section>
+
+        <section class="reveal">
+          <h2><span class="idx">02</span> Problems I Solved</h2>
+          <ul class="feature-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Fraud-resistant quantity.</strong> Workers were paid on quantity they self-reported at end of shift. FlowTracker counts verified RFID scans of fixed-size material units instead, so the number can't be typed or inflated.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Duplicate-scan protection.</strong> A reader firing twice on one tap would quietly bring back the over-counting the system exists to stop, so duplicate handling is built into the pickup API rather than left as an afterthought.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Cards locked to readers.</strong> Each employee's card is tied to one assigned reader. A scan at any other reader is rejected (403), so a card can't collect pickups from a different picking area.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Scan-to-enroll, reusable cards.</strong> Admins open a short enrollment session and the next tap on that reader registers the card, with no firmware changes needed. Card IDs only have to be unique among active employees, so cards from staff who leave can be reissued.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Fleet provisioning &amp; OTA.</strong> Devices move through a status lifecycle (PENDING, ACTIVE, DISABLED, RETIRED). They are set up through a secured captive portal, send heartbeats, pull versioned config, and receive firmware through an admin-approved OTA gate. There's also in-browser flashing over Web Serial.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><strong>Automated reporting.</strong> Styled Daily, Weekly and Monthly XLSX workbooks are emailed on one IST schedule, with per-area and per-device breakdowns, plus CSV export and a full audit trail.</p></li>
+          </ul>
+
+          <div class="gallery cols-3 reveal">
+            <figure class="shot"><a class="shot-zoom" href="assets/img/ft-employees.jpg" target="_blank" rel="noopener"><img src="assets/img/ft-employees.jpg" alt="Employees page listing employee numbers, RFID card IDs and assigned readers" loading="lazy" /></a><figcaption><b>Employees.</b> Auto-numbered records, each card locked to one assigned reader.</figcaption></figure>
+            <figure class="shot"><a class="shot-zoom" href="assets/img/ft-pickups.jpg" target="_blank" rel="noopener"><img src="assets/img/ft-pickups.jpg" alt="Pickups In Progress page with elapsed time and force-complete actions" loading="lazy" /></a><figcaption><b>Live pickups.</b> Open sessions with elapsed time and a ready-to-complete flag.</figcaption></figure>
+            <figure class="shot"><a class="shot-zoom" href="assets/img/ft-devices.jpg" target="_blank" rel="noopener"><img src="assets/img/ft-devices.jpg" alt="Devices page showing an RFID reader with area, model, firmware, status and last seen" loading="lazy" /></a><figcaption><b>Device fleet.</b> Reader status, area, firmware version and last heartbeat.</figcaption></figure>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h2><span class="idx">03</span> Tech Stack</h2>
+          <div class="stack-table">
+            <div class="stack-row"><div class="layer">Hardware</div><div class="tech">ESP32-based RFID readers with a secured captive-portal provisioning AP and two-tier reset (network / factory)</div></div>
+            <div class="stack-row"><div class="layer">Device API</div><div class="tech">Versioned REST (<code>/api/v1</code>): register, heartbeat, config fetch, pickup; status enforced per endpoint</div></div>
+            <div class="stack-row"><div class="layer">Backend</div><div class="tech">Node.js on Vercel serverless functions, Vercel Cron retention jobs</div></div>
+            <div class="stack-row"><div class="layer">Data</div><div class="tech">Supabase (PostgreSQL): devices, employees, pickup events, enrollment sessions, audit trail; Edge Functions + pg_cron for scheduled email</div></div>
+            <div class="stack-row"><div class="layer">Web App</div><div class="tech">React + Vite + Tailwind PWA, Recharts dashboards, esptool-js browser flashing, XLSX/ExcelJS reports</div></div>
+            <div class="stack-row"><div class="layer">Firmware Ops</div><div class="tech">OTA release pipeline with admin approval gate, force-reflag and cancel, plus manual firmware upload</div></div>
+          </div>
+        </section>
+
+        <section class="reveal">
+          <h2><span class="idx">04</span> Result</h2>
+          <p>Delivered as a working platform: an admin dashboard showing live device status, in-progress pickups, per-area daily completions and stuck-device alerts, with employee enrollment and automated emailed reports. Wage figures now come from verified scan counts rather than a number someone said out loud.</p>
+          <div class="gallery gallery-stack reveal">
+            <figure class="shot"><a class="shot-zoom" href="assets/img/ft-dashboard.jpg" target="_blank" rel="noopener"><img src="assets/img/ft-dashboard.jpg" alt="FlowTrack dashboard with today's completions donut and weekly completion trend" loading="lazy" /></a><figcaption><b>Dashboard.</b> Today's completions per employee and the weekly trend, filterable by area.</figcaption></figure>
+          </div>
+          <div class="gallery reveal">
+            <figure class="shot"><a class="shot-zoom" href="assets/img/ft-dashboard-status.jpg" target="_blank" rel="noopener"><img src="assets/img/ft-dashboard-status.jpg" alt="Dashboard showing device and employee counts, employee status, alerts and recent activity" loading="lazy" /></a><figcaption><b>Operations view.</b> Device and workforce status, open-pickup alerts and a live activity feed.</figcaption></figure>
+            <figure class="shot"><a class="shot-zoom" href="assets/img/ft-reports.jpg" target="_blank" rel="noopener"><img src="assets/img/ft-reports.jpg" alt="Pickup Reports page with period selection and email recipients" loading="lazy" /></a><figcaption><b>Reports.</b> Daily, Weekly and Monthly exports plus scheduled email recipients.</figcaption></figure>
+          </div>
+
+          <div class="result-grid">
+            <div class="result-tile"><div class="big"><span class="highlight">1 scan</span></div><div class="lbl">= 1 verified unit</div></div>
+            <div class="result-tile"><div class="big"><span class="highlight">OTA</span></div><div class="lbl">Approval-gated updates</div></div>
+            <div class="result-tile"><div class="big"><span class="highlight">XLSX</span></div><div class="lbl">Scheduled reports</div></div>
+            <div class="result-tile"><div class="big"><span class="highlight">Audit</span></div><div class="lbl">Full activity trail</div></div>
+          </div>
+        </section>
+
+        <section class="reveal" id="security">
+          <h2><span class="idx">05</span> Security Perspective</h2>
+          <p>A system that sets pay is a system someone will try to game. Here is how I'd look at it as an OT security engineer.</p>
+          <ul class="feature-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3 5 6v5c0 4 2.7 6.8 7 8 4.3-1.2 7-4 7-8V6l-7-3z" stroke-linejoin="round"/></svg></span><p><strong>Attack surface.</strong> Low-cost field readers in a factory, an HTTP API they call, and a pay-linked counter. The data is worth manipulating, and the readers are physically reachable.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3 5 6v5c0 4 2.7 6.8 7 8 4.3-1.2 7-4 7-8V6l-7-3z" stroke-linejoin="round"/></svg></span><p><strong>Secure by design.</strong> Status is enforced per endpoint (a PENDING reader can't log pickups). Cards are bound to readers. Devices are never hard-deleted, so history stays attributable. Admin sessions are server-side and revocable, OTA needs explicit approval, and the provisioning AP uses a per-device password.</p></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3 5 6v5c0 4 2.7 6.8 7 8 4.3-1.2 7-4 7-8V6l-7-3z" stroke-linejoin="round"/></svg></span><p><strong>Trade-off I'd revisit.</strong> Device-token authentication was later removed, so readers are identified by <code>device_id</code> alone. Anyone who knows or sniffs an ID could forge pickups. For production I'd bring back per-device credentials (ideally mTLS or signed requests with keys in ESP32 secure storage), turn on flash/NVS encryption and secure boot, and alert on unusual scan rates.</p></li>
+          </ul>
+
+          <div class="gallery reveal" style="grid-template-columns:1fr;max-width:560px;">
+            <figure class="shot"><a class="shot-zoom" href="assets/img/ft-users.jpg" target="_blank" rel="noopener"><img src="assets/img/ft-users.jpg" alt="Users page showing admin accounts with role and status" loading="lazy" /></a><figcaption><b>Access control.</b> Admin/User roles with disable-not-delete accounts.</figcaption></figure>
+          </div>
+        </section>
+
+      </div>
+
+      <aside class="detail-side reveal">
+        <div class="side-card">
+          <h4>Project Snapshot</h4>
+          <div class="kv"><span class="k">Domain</span><span class="v">RFID / Industrial IoT</span></div>
+          <div class="kv"><span class="k">Industry</span><span class="v">Coir processing</span></div>
+          <div class="kv"><span class="k">Device</span><span class="v">ESP32 RFID reader</span></div>
+          <div class="kv"><span class="k">Backend</span><span class="v">Node.js · Supabase</span></div>
+          <div class="kv"><span class="k">Frontend</span><span class="v">React PWA</span></div>
+        </div>
+        <div class="side-card">
+          <h4>Key Capabilities</h4>
+          <div class="chips">
+            <span class="eco-tag">Provisioning</span><span class="eco-tag">OTA</span><span class="eco-tag">Heartbeat</span>
+            <span class="eco-tag">Web Serial Flash</span><span class="eco-tag">Audit Trail</span><span class="eco-tag">XLSX Reports</span>
+          </div>
+          <a href="https://github.com/sathya-coirs/FlowTracker" target="_blank" rel="noopener" class="link-arrow" style="margin-top:14px;display:inline-block;">View on GitHub ↗</a>
+        </div>
+        <div class="side-card">
+          <h4>More Projects</h4>
+          <div class="kv"><span class="k"><a href="project-ble-tracking.html" class="link-arrow">BLE Tracking</a></span></div>
+          <div class="kv"><span class="k"><a href="project-power-factor.html" class="link-arrow">Power Factor</a></span></div>
+          <a href="contact.html" class="btn btn-blue btn-sm" style="margin-top:14px;width:100%;">Get in Touch</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid-bg"></div>
+    <div class="footer-inner">
+      <div class="footer-motto">Build · Break · Secure</div>
+      <div class="footer-container">
+        <div class="footer-brand">
+          <div class="footer-logo"><span class="logo-mark">K</span> Kalaichelvan S</div>
+          <p class="footer-description">OT / ICS Security Engineer securing industrial and building-automation systems — grounded in hands-on product development across firmware, protocols, PLC/SCADA and cloud.</p>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/in/kalaichelvansk/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg></a>
+            <a href="mailto:kalaichelvanssivakumar@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+            <a href="https://github.com/" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9v2.81c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-section"><h3>Projects</h3><ul class="footer-links">
+          <li><a href="project-computer-vision.html">Computer Vision</a></li>
+          <li><a href="project-radar.html">Radar V1 &amp; V2</a></li>
+          <li><a href="project-power-factor.html">Power Factor Correction</a></li>
+          <li><a href="project-ble-tracking.html">BLE Tracking</a></li>
+          <li><a href="project-flowtracker.html">FlowTracker RFID</a></li>
+        </ul></div>
+        <div class="footer-section"><h3>Navigate</h3><ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul></div>
+        <div class="footer-section"><h3>Contact</h3><ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:kalaichelvanssivakumar@gmail.com">kalaichelvanssivakumar@gmail.com</a></li>
+          <li><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85V21H9z"/></svg><a href="https://www.linkedin.com/in/kalaichelvansk/" target="_blank" rel="noopener">linkedin.com/in/kalaichelvansk</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <span>© <span data-year>2026</span> Kalaichelvan S · Built with care.</span>
+        <div class="footer-badges"><span>OT Security</span><span>ICS</span><span>IEC 62443</span><span>Forensics</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
